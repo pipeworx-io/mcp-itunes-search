@@ -31,7 +31,7 @@ const RSS_BASE = 'https://rss.applemarketingtools.com/api/v2';
 const tools: McpToolExport['tools'] = [
   {
     name: 'search',
-    description: 'Search iTunes catalog.',
+    description: 'Search the Apple iTunes catalog by keyword across music, movies, podcasts, TV shows, apps, ebooks, and more; filterable by media type, entity, country, and explicit flag; returns up to 200 matching items with metadata.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -70,7 +70,7 @@ const tools: McpToolExport['tools'] = [
   },
   {
     name: 'top_movies',
-    description: 'Top-grossing movies chart.',
+    description: 'DEPRECATED — Apple discontinued the iTunes movies chart (permanent 404). For popular, trending, or current movies use the tmdb pack instead: tmdb_trending, discover_movie, or get_movie.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -131,7 +131,11 @@ async function callTool(name: string, args: Record<string, unknown>): Promise<un
       return itunesGet(`${LOOKUP}?${params}`);
     }
     case 'top_movies':
-      return rss('movies', (args.country as string) ?? 'us', 'top-movies', (args.limit as number) ?? 25);
+      // Apple discontinued the iTunes movies chart on the RSS feed generator
+      // (music/podcasts/books still publish; movies/TV do not) — the endpoint
+      // returns a permanent 404. Surface an actionable sibling hint instead of a
+      // raw 404 so callers (and ask_pipeworx routing) move to tmdb.
+      throw new Error('upstream_down: Apple discontinued the iTunes movies chart feed (permanent 404). For popular or current movies use the tmdb pack: tmdb_trending, discover_movie, or get_movie.');
     case 'top_podcasts':
       return rss('podcasts', (args.country as string) ?? 'us', 'top', (args.limit as number) ?? 25);
     case 'top_books':
