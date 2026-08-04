@@ -1,18 +1,24 @@
-# mcp-itunes-search
+# @pipeworx/itunes-search
 
-iTunes Search MCP — Apple's public catalog search
+Apple iTunes Search MCP — search across the iTunes Store catalog: music, movies, podcasts, audiobooks, ebooks, software/apps. No auth.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 965+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1394+ live data sources.
 
 ## Tools
 
-| Tool | Description |
-|------|-------------|
-| `search` | Search the Apple iTunes catalog by keyword across music, movies, podcasts, TV shows, apps, ebooks, and more; filterable by media type, entity, country, and explicit flag; returns up to 200 matching items with metadata. |
-| `lookup` | Exact-ID lookup. Provide any one of id / bundle_id / isbn / upc / amg_artist_id / amg_album_id. |
-| `top_movies` | DEPRECATED — Apple discontinued the iTunes movies chart (permanent 404). For popular, trending, or current movies use the tmdb pack instead: tmdb_trending, discover_movie, or get_movie. |
-| `top_podcasts` | Top podcasts chart. |
-| `top_books` | Top ebooks chart. |
+- `search(term, media?, entity?, attribute?, country?, limit?, lang?, explicit?)` — primary search
+- `lookup(id?, bundle_id?, isbn?, upc?, amg_artist_id?, amg_album_id?, country?, entity?, limit?)` — exact-ID lookup
+- `top_movies(country?, limit?)` — top-grossing movies (RSS-based)
+- `top_podcasts(country?, limit?)` — top podcasts
+- `top_books(country?, limit?, free_or_paid?)` — top ebooks
+
+## Data source
+
+- Search: `https://itunes.apple.com/search`
+- Lookup: `https://itunes.apple.com/lookup`
+- Charts: `https://rss.applemarketingtools.com/api/v2/<country>/...`
+
+Rate limit ~20 req/min per IP for search/lookup; charts are static and cached.
 
 ## Quick Start
 
@@ -28,7 +34,7 @@ Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
 }
 ```
 
-Or connect to the full Pipeworx gateway for access to all 965+ data sources:
+Or connect to the full Pipeworx gateway for access to all 1394+ data sources:
 
 ```json
 {
@@ -52,7 +58,7 @@ The gateway picks the right tool and fills the arguments automatically.
 
 ## More
 
-- [All tools and guides](https://github.com/pipeworx-io/examples)
+- [Docs and guides](https://pipeworx.io/docs)
 - [pipeworx.io](https://pipeworx.io)
 
 ## License
