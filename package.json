@@ -1,20 +1,32 @@
 {
   "name": "@pipeworx/mcp-itunes-search",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "iTunes Search MCP — Apple's public catalog search",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "bin": {
+    "mcp-itunes-search": "bin/cli.js"
+  },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "itunes-search"],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pipeworx-io/mcp-itunes-search"
+    "url": "git+https://github.com/pipeworx-io/mcp-itunes-search.git"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "tsx": "^4.19.0"
+  },
   "devDependencies": {
-    "typescript": "^5.7.0"
+    "typescript": "^5.9.3",
+    "@cloudflare/workers-types": "^4.20260405.1"
+  },
+  "pipeworx": {
+    "sourceHash": "v1-ed106861d9a5e8a81d66a4aab69f1865c023fcebb35f58b842cd26789954aa7a",
+    "sourceCommit": "70cd53748fc9f9a43ed3681d751bfa96e701efd2"
   }
 }
