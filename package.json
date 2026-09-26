@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-itunes-search",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "iTunes Search MCP — Apple's public catalog search",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-ed106861d9a5e8a81d66a4aab69f1865c023fcebb35f58b842cd26789954aa7a",
-    "sourceCommit": "70cd53748fc9f9a43ed3681d751bfa96e701efd2"
+    "sourceHash": "v1-256975dca5561b950a43a8572ff9539cd38cc93f4372584a3b1e54ccef21aa6b",
+    "sourceCommit": "1064560fd9dcd0d6fc2606298c2ba244b3a1fbeb"
   }
 }
